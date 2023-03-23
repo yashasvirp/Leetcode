@@ -1,0 +1,1 @@
+This branch contains Leetcode questions in Python. The description and strategy for the same will be present in corresponding CPP questions in CPP branch.
