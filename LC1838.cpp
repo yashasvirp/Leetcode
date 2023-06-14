@@ -38,3 +38,28 @@ public:
         return maxFreq;
     }
 };
+
+// Added a sliding window approach
+
+class Solution {
+public:
+    int maxFrequency(vector<int>& nums, int k) {
+        
+        std::ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+        long i = 0, freq = 1, sum = 0, n = nums.size();
+
+        sort(nums.begin(), nums.end());
+
+        for(int j = 0; j < n; ++j){
+            
+            sum += nums[j];
+
+            while((j-i+1)*nums[j] - sum > k)
+                sum -= nums[i++];
+            
+            freq = max(freq, j - i + 1);
+        }
+
+        return freq;
+    }
+};
