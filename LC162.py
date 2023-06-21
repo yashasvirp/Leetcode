@@ -6,10 +6,13 @@ class Solution:
         while l <= r:
             m = (l + r)//2
 
-            if (m == 0 or a[m] >= a[m-1]) and (m == n or a[m] >= a[m+1]):
-                return m
+            left = (m-1) >= l and a[m] <= a[m-1]    # mid less than left
+            right = (m+1) <= r and a[m] <= a[m+1]   # mid less than right
             
-            if a[m] < a[m+1]:
+            if not left and not right:  # mid is peak
+                return m
+
+            if right:
                 l = m + 1
             else:
                 r = m - 1
