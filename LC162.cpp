@@ -7,10 +7,13 @@ public:
         while(l <= r){
             int m = (l+r)/2;
 
-            if((m == n || a[m] >= a[m+1]) and (m == 0 ||a[m] >= a[m-1]))
-                return m;
+            bool left = m-1 >= l and a[m] <= a[m-1];    // mid is lesser than left
+            bool right = m+1 <= r and a[m] <= a[m+1];   // mid is lesser than right
             
-            if(a[m] < a[m+1])
+            if(!left and !right)    // mid is peak
+                return m;
+
+            if(right)
                 l = m + 1;
             else
                 r = m - 1;
