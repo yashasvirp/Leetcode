@@ -3,13 +3,9 @@ class Solution:
         ans = 0
         d = {'I':1,'X':10,'V':5,'L':50,'C':100,'D':500,'M':1000}
         
-        ans += d[s[0]]
-
-        for i in range(1, len(s)):
-            if d[s[i]] // d[s[i-1]] == 5:
-                ans += 3*d[s[i-1]]
-            elif d[s[i]] // d[s[i-1]] == 10:
-                ans += 8*d[s[i-1]]
+        for i in range(len(s)):
+            if i < len(s)-1 and d[s[i]] < d[s[i+1]]:
+                ans -= d[s[i]]
             else:
                 ans += d[s[i]]
 
